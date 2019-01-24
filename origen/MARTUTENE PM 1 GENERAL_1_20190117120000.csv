@@ -1,0 +1,11 @@
+﻿Nombre de pasarela;SN de pasarela;Dirección IP de pasarela;Dirección MAC de pasarela;Nombre del dispositivo;ID local de dispositivo;ID de tipo de dispositivo;Nombre de tipo de dispositivo;Intervalo de registro;Intervalos de históricos
+EGX300;53101677;192.16.1.222;00:80:67:85:DF:B0;MARTUTENE PM 1 GENERAL;1;3255;iEM3255;15;0
+
+;;;ID de tema1;ID de tema2;ID de tema3;ID de tema4
+;;;64149;64157;1042;1046
+
+Error;Desviación de UTC (minutos);Indicador de hora local;Energía entregada (kWh);Energía entregada (kVARh);Potencia activa total (kW);Potencia reactiva total (kVAR)
+0;60;2019-01-17 11:15:00;963752,117;123150,846;54,274;-5,050
+0;60;2019-01-17 11:30:00;963767,432;123150,909;64,293;-5,349
+0;60;2019-01-17 11:45:00;963782,082;123150,960;52,668;-5,463
+0;60;2019-01-17 12:00:00;963797,223;123151,111;58,248;-4,612

@@ -1,0 +1,11 @@
+﻿Nombre de pasarela;SN de pasarela;Dirección IP de pasarela;Dirección MAC de pasarela;Nombre del dispositivo;ID local de dispositivo;ID de tipo de dispositivo;Nombre de tipo de dispositivo;Intervalo de registro;Intervalos de históricos
+EGX300;53101677;192.16.1.222;00:80:67:85:DF:B0;MARTUTENE SIM 1 AGUA;5;23;SIM10M;15;0
+
+;;;ID de tema1;ID de tema2;ID de tema3;ID de tema4;ID de tema5;ID de tema6
+;;;401;402;403;404;405;406
+
+Error;Desviación de UTC (minutos);Indicador de hora local;Entrada D0;Entrada D1;Entrada D2;Entrada D3;Entrada D4;Entrada D5
+0;60;2019-01-17 11:15:00;14319;0;0;0;0;0
+0;60;2019-01-17 11:30:00;14320;0;0;0;0;0
+0;60;2019-01-17 11:45:00;14321;0;0;0;0;0
+0;60;2019-01-17 12:00:00;14321;0;0;0;0;0
