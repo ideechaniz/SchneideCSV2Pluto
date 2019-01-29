@@ -1,11 +1,13 @@
 #!/usr/bin/env python
+# -*- coding: ISO-8859-1 -*-
 #
-# csv_tratable.py 1.5 24/01/2019
+# csv_tratable.py 1.6 29/01/2019
 # Iker De Echaniz ideechaniz@gmail.com
 # Genera CSV tratables a traves de los falsos CSV de Schneider Electric para Elektra en Martutene
 # Requiere python 3.2 minimo
 #  
 # Changelog
+# 1.6 Iincluir def ips_tratables(fichero_tratado) para poner dos puntos: antes de las IP para Pluto
 # 1.5 Incluir funcion tantas_lineas_en_tmp1_como_en_tmp2 para tratar datos finales con pluto
 #     Incluir debugeo avanzado con nombre de funcion
 # 1.4.1 Incluir aviso en ayuda de que las rutas con espacios deben ir entre comillas
@@ -22,7 +24,7 @@ import getopt
 import logging
 import pandas as pd # pip install pandas
 
-version="1.5"
+version="1.6"
     
 def main(argv):
   logger.debug('Modo Debug activado')
@@ -66,9 +68,20 @@ def main(argv):
         fichero_tratado="tratado_"+fichero[0:-19]+".csv"
         concatenar(fichero+"_tmp1",fichero+"_tmp2",fichero_tratado)
         borrar_temporales(fichero)
+        ips_tratables(fichero_tratado)
         logger.debug("Moviendo "+ fichero_tratado +" a "+ dir_destino+"\\"+fichero[0:-19]+"\\")
         os.makedirs(dir_destino+"\\"+fichero[0:-19], exist_ok=True)
         os.replace(fichero_tratado, dir_destino+"\\"+fichero[0:-19]+"\\"+fichero_tratado) #os no tiene mv tiene rename y replace
+
+def ips_tratables(fichero_tratado):
+  f=pd.read_csv(fichero_tratado, sep=';',encoding="ISO-8859-1")
+  df=pd.DataFrame(f)
+  #print(list(df.columns.values))
+  #print(df['DirecciÃ\x83Â³n IP de pasarela'])
+  df['DirecciÃ\x83Â³n IP de pasarela']=':'+df['DirecciÃ\x83Â³n IP de pasarela'].astype(str)
+  #WTF! quoting=None does nothing
+  f.to_csv(fichero_tratado ,sep=';', index=False, quoting=None, quotechar="'")
+
 
 # Magia me crea datos donde no habia copiando una fila n veces.
 def tantas_lineas_en_tmp1_como_en_tmp2(fichero_original):
@@ -107,13 +120,13 @@ def a_dos_ficheros(fichero_original):
 
   numline=0
   while line:
-	#Primera parte del CSV a un fichero
+    #Primera parte del CSV a un fichero
     if(numline <= 1):
       f1.write(line)
 
 	# Lo de entre medias lo ignoramos
-	
-	#Segunda parte del CSV a otro fichero
+
+    #Segunda parte del CSV a otro fichero
     if (numline >= 6):
       f2.write(line)
 
@@ -126,8 +139,8 @@ def a_dos_ficheros(fichero_original):
   f2.close()
 
 def concatenar(A,B,C): # A y B en C
-  a= pd.read_csv(A, sep=';')
-  b= pd.read_csv(B, sep=';')
+  a= pd.read_csv(A, sep=';',encoding="ISO-8859-1")
+  b= pd.read_csv(B, sep=';',encoding="ISO-8859-1")
 
   # axis=1 son columnas, axis=0 son filas.
   result= pd.concat([a,b], axis=1, join='outer', sort=False, ignore_index=False)
