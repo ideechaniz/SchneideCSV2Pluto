@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: UTF-8 -*-
 #
 # csv_tratable.py 1.6 29/01/2019
 # Iker De Echaniz ideechaniz@gmail.com
@@ -7,6 +7,7 @@
 # Requiere python 3.2 minimo
 #  
 # Changelog
+# 1.7 Cambiar a UTF8
 # 1.6 Iincluir def ips_tratables(fichero_tratado) para poner dos puntos: antes de las IP para Pluto
 # 1.5 Incluir funcion tantas_lineas_en_tmp1_como_en_tmp2 para tratar datos finales con pluto
 #     Incluir debugeo avanzado con nombre de funcion
@@ -74,11 +75,11 @@ def main(argv):
         os.replace(fichero_tratado, dir_destino+"\\"+fichero[0:-19]+"\\"+fichero_tratado) #os no tiene mv tiene rename y replace
 
 def ips_tratables(fichero_tratado):
-  f=pd.read_csv(fichero_tratado, sep=';',encoding="ISO-8859-1")
+  f=pd.read_csv(fichero_tratado, sep=';',encoding="UTF8")
   df=pd.DataFrame(f)
   #print(list(df.columns.values))
-  #print(df['Direcci�\x83³n IP de pasarela'])
-  df['Direcci�\x83³n IP de pasarela']=':'+df['Direcci�\x83³n IP de pasarela'].astype(str)
+  #print(df['Dirección IP de pasarela'])
+  df['Dirección IP de pasarela']=':'+df['Dirección IP de pasarela'].astype(str)  
   #WTF! quoting=None does nothing
   f.to_csv(fichero_tratado ,sep=';', index=False, quoting=None, quotechar="'")
 
@@ -139,8 +140,8 @@ def a_dos_ficheros(fichero_original):
   f2.close()
 
 def concatenar(A,B,C): # A y B en C
-  a= pd.read_csv(A, sep=';',encoding="ISO-8859-1")
-  b= pd.read_csv(B, sep=';',encoding="ISO-8859-1")
+  a= pd.read_csv(A, sep=';',encoding="UTF8")
+  b= pd.read_csv(B, sep=';',encoding="UTF8")
 
   # axis=1 son columnas, axis=0 son filas.
   result= pd.concat([a,b], axis=1, join='outer', sort=False, ignore_index=False)
