@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-# csv_tratable.py 1.6 29/01/2019
+# csv_tratable.py 1.7 30/01/2019
 # Iker De Echaniz ideechaniz@gmail.com
 # Genera CSV tratables a traves de los falsos CSV de Schneider Electric para Elektra en Martutene
 # Requiere python 3.2 minimo
@@ -25,7 +25,7 @@ import getopt
 import logging
 import pandas as pd # pip install pandas
 
-version="1.6"
+version="1.7"
     
 def main(argv):
   logger.debug('Modo Debug activado')
