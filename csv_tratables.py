@@ -7,6 +7,7 @@
 # Requiere python 3.2 minimo
 #  
 # Changelog
+# 1.8 Permitir varios ficheros similares en el mismo directorio
 # 1.7 Cambiar a UTF8
 # 1.6 Iincluir def ips_tratables(fichero_tratado) para poner dos puntos: antes de las IP para Pluto
 # 1.5 Incluir funcion tantas_lineas_en_tmp1_como_en_tmp2 para tratar datos finales con pluto
@@ -25,7 +26,7 @@ import getopt
 import logging
 import pandas as pd # pip install pandas
 
-version="1.7"
+version="1.8"
     
 def main(argv):
   logger.debug('Modo Debug activado')
@@ -66,7 +67,7 @@ def main(argv):
         logger.info(fichero)
         a_dos_ficheros(fichero)
         tantas_lineas_en_tmp1_como_en_tmp2(fichero)
-        fichero_tratado="tratado_"+fichero[0:-19]+".csv"
+        fichero_tratado="tratado_"+fichero
         concatenar(fichero+"_tmp1",fichero+"_tmp2",fichero_tratado)
         borrar_temporales(fichero)
         ips_tratables(fichero_tratado)
