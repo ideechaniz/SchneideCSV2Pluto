@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-# csv_tratable.py 1.7 30/01/2019
+# csv_tratable.py 1.8 07/02/2019
 # Iker De Echaniz ideechaniz@gmail.com
 # Genera CSV tratables a traves de los falsos CSV de Schneider Electric para Elektra en Martutene
 # Requiere python 3.2 minimo
